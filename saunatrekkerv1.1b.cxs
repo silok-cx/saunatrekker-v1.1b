@@ -1543,17 +1543,6 @@ If tracks02[tpos+(patterns[ppos]*64)] Then GlideNote02=LastNote02
 If tracks03[tpos+(patterns[ppos]*64)] Then GlideNote03=LastNote03
 If tracks04[tpos+(patterns[ppos]*64)] Then GlideNote04=LastNote04
 
-'If tracks01[tpos+(patterns[ppos]*64)] Then GlideVal01=0
-'If tracks02[tpos+(patterns[ppos]*64)] Then GlideVal02=0
-'If tracks03[tpos+(patterns[ppos]*64)] Then GlideVal03=0
-'If tracks04[tpos+(patterns[ppos]*64)] Then GlideVal04=0
-
-' Reset Vibrato
-'If tracks01[tpos+(patterns[ppos]*64)] Then Vibrato01_p=0
-'If tracks02[tpos+(patterns[ppos]*64)] Then Vibrato02_p=0
-'If tracks03[tpos+(patterns[ppos]*64)] Then Vibrato03_p=0
-'If tracks04[tpos+(patterns[ppos]*64)] Then Vibrato04_p=0
-
 ' Reset Pitchval by Trigger
 If tracks01[tpos+(patterns[ppos]*64)] Then PitchVal01=0' Later Finetunesetting
 If tracks02[tpos+(patterns[ppos]*64)] Then PitchVal02=0
@@ -1564,11 +1553,6 @@ If tracks01[tpos+(patterns[ppos]*64)] Then GlideVal01=0' Later Finetunesetting
 If tracks02[tpos+(patterns[ppos]*64)] Then GlideVal02=0
 If tracks03[tpos+(patterns[ppos]*64)] Then GlideVal03=0
 If tracks04[tpos+(patterns[ppos]*64)] Then GlideVal04=0
-
-'If tracks01[tpos+(patterns[ppos]*64)] Then Vibrato01_speed=0
-'If tracks02[tpos+(patterns[ppos]*64)] Then Vibrato02_speed=0
-'If tracks03[tpos+(patterns[ppos]*64)] Then Vibrato03_speed=0
-'If tracks04[tpos+(patterns[ppos]*64)] Then Vibrato04_speed=0
 
 ' Set Volume back by trigger
 If tracks_inst01[tpos+(patterns[ppos]*64)] Then Volume01=samplevolume[tracks_inst01[tpos+(patterns[ppos]*64)]]'Normaly Samplevol
@@ -1599,21 +1583,16 @@ If tracks_fx03[tpos+(patterns[ppos]*64)]=4 And Int(tracks_fx203[tpos+(patterns[p
 If tracks_fx04[tpos+(patterns[ppos]*64)]=4 And Int(tracks_fx204[tpos+(patterns[ppos]*64)]/16)>0 Then Vibrato04_speed=Int(tracks_fx204[tpos+(patterns[ppos]*64)]/16)
 
 ' Set 3xx - Oct-25
-If tracks_fx01[tpos+(patterns[ppos]*64)]=3 And tracks_fx201[tpos+(patterns[ppos]*64)] > 0 Then GlideCount01=tracks_fx201[tpos+(patterns[ppos]*64)]*dfx'(dfx*1.7)
-If tracks_fx02[tpos+(patterns[ppos]*64)]=3 And tracks_fx202[tpos+(patterns[ppos]*64)] > 0 Then GlideCount02=tracks_fx202[tpos+(patterns[ppos]*64)]*dfx'(dfx*1.7)
-If tracks_fx03[tpos+(patterns[ppos]*64)]=3 And tracks_fx203[tpos+(patterns[ppos]*64)] > 0 Then GlideCount03=tracks_fx203[tpos+(patterns[ppos]*64)]*dfx'(dfx*1.7)
-If tracks_fx04[tpos+(patterns[ppos]*64)]=3 And tracks_fx204[tpos+(patterns[ppos]*64)] > 0 Then GlideCount04=tracks_fx204[tpos+(patterns[ppos]*64)]*dfx'(dfx*1.7)
+If tracks_fx01[tpos+(patterns[ppos]*64)]=3 And tracks_fx201[tpos+(patterns[ppos]*64)] > 0 Then GlideCount01=tracks_fx201[tpos+(patterns[ppos]*64)]*dfx
+If tracks_fx02[tpos+(patterns[ppos]*64)]=3 And tracks_fx202[tpos+(patterns[ppos]*64)] > 0 Then GlideCount02=tracks_fx202[tpos+(patterns[ppos]*64)]*dfx
+If tracks_fx03[tpos+(patterns[ppos]*64)]=3 And tracks_fx203[tpos+(patterns[ppos]*64)] > 0 Then GlideCount03=tracks_fx203[tpos+(patterns[ppos]*64)]*dfx
+If tracks_fx04[tpos+(patterns[ppos]*64)]=3 And tracks_fx204[tpos+(patterns[ppos]*64)] > 0 Then GlideCount04=tracks_fx204[tpos+(patterns[ppos]*64)]*dfx
 
 ' EDx Sample Trigger Delay - Okt-25
 If tracks_fx01[tpos+(patterns[ppos]*64)]=14 And Int(tracks_fx201[tpos+(patterns[ppos]*64)]/16)=13 Then EDTrigger01=tracks_fx201[tpos+(patterns[ppos]*64)]-208
 If tracks_fx02[tpos+(patterns[ppos]*64)]=14 And Int(tracks_fx202[tpos+(patterns[ppos]*64)]/16)=13 Then EDTrigger02=tracks_fx202[tpos+(patterns[ppos]*64)]-208
 If tracks_fx03[tpos+(patterns[ppos]*64)]=14 And Int(tracks_fx203[tpos+(patterns[ppos]*64)]/16)=13 Then EDTrigger03=tracks_fx203[tpos+(patterns[ppos]*64)]-208
 If tracks_fx04[tpos+(patterns[ppos]*64)]=14 And Int(tracks_fx204[tpos+(patterns[ppos]*64)]/16)=13 Then EDTrigger04=tracks_fx204[tpos+(patterns[ppos]*64)]-208
-
-'If tracks_fx01[tpos+(patterns[ppos]*64)]=14 And Int(tracks_fx201[tpos+(patterns[ppos]*64)]/16)*16=13 Then Volume01=0
-'If tracks_fx02[tpos+(patterns[ppos]*64)]=14 And Int(tracks_fx202[tpos+(patterns[ppos]*64)]/16)*16=13 Then Volume02=0
-'If tracks_fx03[tpos+(patterns[ppos]*64)]=14 And Int(tracks_fx203[tpos+(patterns[ppos]*64)]/16)*16=13 Then Volume03=0
-'If tracks_fx04[tpos+(patterns[ppos]*64)]=14 And Int(tracks_fx204[tpos+(patterns[ppos]*64)]/16)*16=13 Then Volume04=0
 
 ' Get CXX and set Volume
 If tracks_fx01[tpos+(patterns[ppos]*64)]=12 Then Volume01=tracks_fx201[tpos+(patterns[ppos]*64)]
@@ -1934,13 +1913,9 @@ endif
 Endif
 
 ' Limit Volume 'Change Oct-25
-'If LastInst01>0 And 
 If tracks_fx01[tpos-1+(patterns[ppos]*64)]<>12 And Volume01>samplevolume[LastInst01] Then Volume01=samplevolume[LastInst01]
-'If LastInst02>0 And 
 If tracks_fx02[tpos-1+(patterns[ppos]*64)]<>12 And Volume02>samplevolume[LastInst02] Then Volume02=samplevolume[LastInst02]
-'If LastInst03>0 And 
-If tracks_fx03[tpos-1+(patterns[ppos]*64)]<>12 And Volume03>samplevolume[LastInst03] Then Volume03=samplevolume[LastInst03]
-'If LastInst04>0 And 
+If tracks_fx03[tpos-1+(patterns[ppos]*64)]<>12 And Volume03>samplevolume[LastInst03] Then Volume03=samplevolume[LastInst03] 
 If tracks_fx04[tpos-1+(patterns[ppos]*64)]<>12 And Volume04>samplevolume[LastInst04] Then Volume04=samplevolume[LastInst04]
 
 If Volume01<0 Then Volume01=0
@@ -1963,93 +1938,87 @@ If ChanMute04 Then SetChannelVolume(3,0.0)
 ' Set 1XX
 If framecount>0
 If tracks_fx01[tpos-1+(patterns[ppos]*64)]=1
-		PitchVal01-=tracks_fx201[tpos-1+(patterns[ppos]*64)]*dfx'(1.7*dfx)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal01-=tracks_fx201[tpos-1+(patterns[ppos]*64)]*dfx
 Endif
 If tracks_fx02[tpos-1+(patterns[ppos]*64)]=1
-		PitchVal02-=tracks_fx202[tpos-1+(patterns[ppos]*64)]*dfx'(1.7*dfx)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal02-=tracks_fx202[tpos-1+(patterns[ppos]*64)]*dfx
 Endif
 If tracks_fx03[tpos-1+(patterns[ppos]*64)]=1
-		PitchVal03-=tracks_fx203[tpos-1+(patterns[ppos]*64)]*dfx'(1.7*dfx)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal03-=tracks_fx203[tpos-1+(patterns[ppos]*64)]*dfx
 Endif
 If tracks_fx04[tpos-1+(patterns[ppos]*64)]=1
-		PitchVal04-=tracks_fx204[tpos-1+(patterns[ppos]*64)]*dfx'(1.7*dfx)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal04-=tracks_fx204[tpos-1+(patterns[ppos]*64)]*dfx
 Endif
 
 ' Set 2XX
 If tracks_fx01[tpos-1+(patterns[ppos]*64)]=2
-		PitchVal01+=tracks_fx201[tpos-1+(patterns[ppos]*64)]*dfx'(1.7*dfx)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal01+=tracks_fx201[tpos-1+(patterns[ppos]*64)]*dfx
 Endif
 If tracks_fx02[tpos-1+(patterns[ppos]*64)]=2
-		PitchVal02+=tracks_fx202[tpos-1+(patterns[ppos]*64)]*dfx'(1.7*dfx)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal02+=tracks_fx202[tpos-1+(patterns[ppos]*64)]*dfx
 Endif
 If tracks_fx03[tpos-1+(patterns[ppos]*64)]=2
-		PitchVal03+=tracks_fx203[tpos-1+(patterns[ppos]*64)]*dfx'(1.7*dfx)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal03+=tracks_fx203[tpos-1+(patterns[ppos]*64)]*dfx
 Endif
 If tracks_fx04[tpos-1+(patterns[ppos]*64)]=2
-		PitchVal04+=tracks_fx204[tpos-1+(patterns[ppos]*64)]*dfx'(1.7*dfx)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal04+=tracks_fx204[tpos-1+(patterns[ppos]*64)]*dfx
 Endif
 
 
 ' Set E1X
 If framecount=1 ' Fine Portamento up / Down / Orig. Protracker
 If tracks_fx01[tpos-1+(patterns[ppos]*64)]=14 And Int(tracks_fx201[tpos-1+(patterns[ppos]*64)]/16)*16=16
-		PitchVal01-=(tracks_fx201[tpos-1+(patterns[ppos]*64)]-16)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal01-=(tracks_fx201[tpos-1+(patterns[ppos]*64)]-16)
 Endif
 If tracks_fx02[tpos-1+(patterns[ppos]*64)]=14 And Int(tracks_fx202[tpos-1+(patterns[ppos]*64)]/16)*16=16
-		PitchVal02-=(tracks_fx202[tpos-1+(patterns[ppos]*64)]-16)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal02-=(tracks_fx202[tpos-1+(patterns[ppos]*64)]-16)
 Endif
 If tracks_fx03[tpos-1+(patterns[ppos]*64)]=14 And Int(tracks_fx203[tpos-1+(patterns[ppos]*64)]/16)*16=16
-		PitchVal03-=(tracks_fx203[tpos-1+(patterns[ppos]*64)]-16)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal03-=(tracks_fx203[tpos-1+(patterns[ppos]*64)]-16)
 Endif
 If tracks_fx04[tpos-1+(patterns[ppos]*64)]=14 And Int(tracks_fx204[tpos-1+(patterns[ppos]*64)]/16)*16=16
-		PitchVal04-=(tracks_fx204[tpos-1+(patterns[ppos]*64)]-16)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal04-=(tracks_fx204[tpos-1+(patterns[ppos]*64)]-16)
 Endif
 
 ' Set E2X
 If tracks_fx01[tpos-1+(patterns[ppos]*64)]=14 And Int(tracks_fx201[tpos-1+(patterns[ppos]*64)]/32)*32=32
-		PitchVal01+=(tracks_fx201[tpos-1+(patterns[ppos]*64)]-32)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal01+=(tracks_fx201[tpos-1+(patterns[ppos]*64)]-32)
 Endif
 If tracks_fx02[tpos-1+(patterns[ppos]*64)]=14 And Int(tracks_fx202[tpos-1+(patterns[ppos]*64)]/32)*32=32
-		PitchVal02+=(tracks_fx202[tpos-1+(patterns[ppos]*64)]-32)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal02+=(tracks_fx202[tpos-1+(patterns[ppos]*64)]-32)
 Endif
 If tracks_fx03[tpos-1+(patterns[ppos]*64)]=14 And Int(tracks_fx203[tpos-1+(patterns[ppos]*64)]/32)*32=32
-		PitchVal03+=(tracks_fx203[tpos-1+(patterns[ppos]*64)]-32)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal03+=(tracks_fx203[tpos-1+(patterns[ppos]*64)]-32)
 Endif
 If tracks_fx04[tpos-1+(patterns[ppos]*64)]=14 And Int(tracks_fx204[tpos-1+(patterns[ppos]*64)]/32)*32=32
-		PitchVal04+=(tracks_fx204[tpos-1+(patterns[ppos]*64)]-32)',speed/4.5)'*(0.33*(speed-1))
+		PitchVal04+=(tracks_fx204[tpos-1+(patterns[ppos]*64)]-32)
 Endif
 Endif
-
-' Set Glide note Fast
-'If LastFX01 <> 3 Then GlideNote01=LastNote01
-'If LastFX01 <> 3 Then GlideNote02=LastNote02
-'If LastFX01 <> 3 Then GlideNote03=LastNote03
-'If LastFX01 <> 3 Then GlideNote04=LastNote04
 
 ' Set 3xx 5xx 'Change Oct-25
 If tracks_fx01[tpos-1+(patterns[ppos]*64)]=3 And GlideVal01+(2*PeriodTable[48-(GlideNote01)])>(2*PeriodTable[48-(LastNote01)]) Or tracks_fx01[tpos-1+(patterns[ppos]*64)]=5 And GlideVal01+(2*PeriodTable[48-(GlideNote01)])>(2*PeriodTable[48-(LastNote01)])
-	GlideVal01-=GlideCount01'tracks_fx201[tpos-1+(patterns[ppos]*64)]*(1.7*dfx)
+	GlideVal01-=GlideCount01
 	If Int(GlideVal01+(2*PeriodTable[48-(GlideNote01)]))<(2*PeriodTable[48-(LastNote01)])
 	GlideNote01=LastNote01
 	GlideVal01=0
 	endif
 Endif
 If tracks_fx02[tpos-1+(patterns[ppos]*64)]=3 And GlideVal02+(2*PeriodTable[48-(GlideNote02)])>(2*PeriodTable[48-(LastNote02)]) Or tracks_fx02[tpos-1+(patterns[ppos]*64)]=5 And GlideVal02+(2*PeriodTable[48-(GlideNote02)])>(2*PeriodTable[48-(LastNote02)])
-	GlideVal02-=GlideCount02'tracks_fx202[tpos-1+(patterns[ppos]*64)]*(1.7*dfx)
+	GlideVal02-=GlideCount02
 	If Int(GlideVal02+(2*PeriodTable[48-(GlideNote02)]))<(2*PeriodTable[48-(LastNote02)])
 	GlideNote02=LastNote02
 	GlideVal02=0
 	endif
 Endif
 If tracks_fx03[tpos-1+(patterns[ppos]*64)]=3 And GlideVal03+(2*PeriodTable[48-(GlideNote03)])>(2*PeriodTable[48-(LastNote03)]) Or tracks_fx03[tpos-1+(patterns[ppos]*64)]=5 And GlideVal03+(2*PeriodTable[48-(GlideNote03)])>(2*PeriodTable[48-(LastNote03)])
-	GlideVal03-=GlideCount03'tracks_fx203[tpos-1+(patterns[ppos]*64)]*(1.7*dfx)
+	GlideVal03-=GlideCount03
 	If Int(GlideVal03+(2*PeriodTable[48-(GlideNote03)]))<(2*PeriodTable[48-(LastNote03)])
 	GlideNote03=LastNote03
 	GlideVal03=0
 	endif
 Endif
 If tracks_fx04[tpos-1+(patterns[ppos]*64)]=3 And GlideVal04+(2*PeriodTable[48-(GlideNote04)])>(2*PeriodTable[48-(LastNote04)]) Or tracks_fx04[tpos-1+(patterns[ppos]*64)]=5 And GlideVal04+(2*PeriodTable[48-(GlideNote04)])>(2*PeriodTable[48-(LastNote04)])
-	GlideVal04-=GlideCount04'tracks_fx204[tpos-1+(patterns[ppos]*64)]*(1.7*dfx)
+	GlideVal04-=GlideCount04
 	If Int(GlideVal04+(2*PeriodTable[48-(GlideNote04)]))<(2*PeriodTable[48-(LastNote04)])
 	GlideNote04=LastNote04
 	GlideVal04=0
@@ -2057,28 +2026,28 @@ If tracks_fx04[tpos-1+(patterns[ppos]*64)]=3 And GlideVal04+(2*PeriodTable[48-(G
 Endif
 
 If tracks_fx01[tpos-1+(patterns[ppos]*64)]=3 And GlideVal01+(2*PeriodTable[48-(GlideNote01)])<(2*PeriodTable[48-(LastNote01)]) Or tracks_fx01[tpos-1+(patterns[ppos]*64)]=5 And GlideVal01+(2*PeriodTable[48-(GlideNote01)])<(2*PeriodTable[48-(LastNote01)])
-	GlideVal01+=GlideCount01'tracks_fx201[tpos-1+(patterns[ppos]*64)]*(1.7*dfx)
+	GlideVal01+=GlideCount01
 	If Int(GlideVal01+(2*PeriodTable[48-(GlideNote01)]))>(2*PeriodTable[48-(LastNote01)])
 	GlideNote01=LastNote01
 	GlideVal01=0
 	endif
 Endif
 If tracks_fx02[tpos-1+(patterns[ppos]*64)]=3 And GlideVal02+(2*PeriodTable[48-(GlideNote02)])<(2*PeriodTable[48-(LastNote02)]) Or tracks_fx02[tpos-1+(patterns[ppos]*64)]=5 And GlideVal02+(2*PeriodTable[48-(GlideNote02)])<(2*PeriodTable[48-(LastNote02)])
-	GlideVal02+=GlideCount02'tracks_fx202[tpos-1+(patterns[ppos]*64)]*(1.7*dfx)
+	GlideVal02+=GlideCount02
 	If Int(GlideVal02+(2*PeriodTable[48-(GlideNote02)]))>(2*PeriodTable[48-(LastNote02)])
 	GlideNote02=LastNote02
 	GlideVal02=0
 	endif
 Endif
 If tracks_fx03[tpos-1+(patterns[ppos]*64)]=3 And GlideVal03+(2*PeriodTable[48-(GlideNote03)])<(2*PeriodTable[48-(LastNote03)]) Or tracks_fx03[tpos-1+(patterns[ppos]*64)]=5 And GlideVal03+(2*PeriodTable[48-(GlideNote03)])<(2*PeriodTable[48-(LastNote03)])
-	GlideVal03+=GlideCount03'tracks_fx203[tpos-1+(patterns[ppos]*64)]*(1.7*dfx)
+	GlideVal03+=GlideCount03
 	If Int(GlideVal03+(2*PeriodTable[48-(GlideNote03)]))>(2*PeriodTable[48-(LastNote03)])
 	GlideNote03=LastNote03
 	GlideVal03=0
 	endif
 Endif
 If tracks_fx04[tpos-1+(patterns[ppos]*64)]=3 And GlideVal04+(2*PeriodTable[48-(GlideNote04)])<(2*PeriodTable[48-(LastNote04)]) Or tracks_fx04[tpos-1+(patterns[ppos]*64)]=5 And GlideVal04+(2*PeriodTable[48-(GlideNote04)])<(2*PeriodTable[48-(LastNote04)])
-	GlideVal04+=GlideCount04'tracks_fx204[tpos-1+(patterns[ppos]*64)]*(1.7*dfx)
+	GlideVal04+=GlideCount04
 	If Int(GlideVal04+(2*PeriodTable[48-(GlideNote04)]))>(2*PeriodTable[48-(LastNote04)])
 	GlideNote04=LastNote04
 	GlideVal04=0
@@ -2144,14 +2113,6 @@ If LastFX04=4 Or LastFX04=6
 	Vibrato04_p=0
 Endif
 
-
-' set pitch rate
-'SetChannelRate( 0, ( ( 7159090.0 / (PitchVal01+Vibrato01_p+(2 * PeriodTable[ 48-(LastNote01+ArpVal01) ] )) / 8400.00 ) ) )
-'SetChannelRate( 1, ( ( 7159090.0 / (PitchVal02+Vibrato02_p+(2 * PeriodTable[ 48-(LastNote02+ArpVal02) ] )) / 8400.00 ) ) )
-'SetChannelRate( 2, ( ( 7159090.0 / (PitchVal03+Vibrato03_p+(2 * PeriodTable[ 48-(LastNote03+ArpVal03) ] )) / 8400.00 ) ) )
-'SetChannelRate( 3, ( ( 7159090.0 / (PitchVal04+Vibrato04_p+(2 * PeriodTable[ 48-(LastNote04+ArpVal04) ] )) / 8400.00 ) ) )
-'+(finetune[LastInst01]*36)
-
 ' set pitch rate - oct 25
 If tracks_fx01[tpos-1+(patterns[ppos]*64)]<>3 and tracks_fx01[tpos-1+(patterns[ppos]*64)]<>5
 	SetChannelRate( 0, ( 7159090.0 / (PitchVal01+Vibrato01_p+(2 * PeriodTable[ (finetune[LastInst01]*36)+48-(LastNote01+ArpVal01) ] )) / 8400.00 ) ) 
@@ -2173,7 +2134,7 @@ If tracks_fx04[tpos-1+(patterns[ppos]*64)]<>3 and tracks_fx04[tpos-1+(patterns[p
 Else
 	SetChannelRate( 3, ( 7159090.0 / (PitchVal04+GlideVal04+(2 * PeriodTable[ (finetune[LastInst04]*36)+48-(GlideNote04+ArpVal04) ] )) / 8400.00 ) )
 endif
-'+(finetune[LastInst01]*36)
+
 
 framecount+=1
 
