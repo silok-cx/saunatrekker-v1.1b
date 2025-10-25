@@ -1876,19 +1876,19 @@ endif
 If framecount>0 'Starts Counting the First Frame / Orig Protracker
 If tracks_fx01[tpos-1+(patterns[ppos]*64)]=10 Or tracks_fx01[tpos-1+(patterns[ppos]*64)]=6 Or tracks_fx01[tpos-1+(patterns[ppos]*64)]=5
 	If tracks_fx201[tpos-1+(patterns[ppos]*64)]<16 Then Volume01-=tracks_fx201[tpos-1+(patterns[ppos]*64)]
-	If tracks_fx201[tpos-1+(patterns[ppos]*64)]>15 Then Volume01+=(tracks_fx201[tpos-1+(patterns[ppos]*64)]-15)
+	If tracks_fx201[tpos-1+(patterns[ppos]*64)]>15 Then Volume01+=tracks_fx201[tpos-1+(patterns[ppos]*64)]/16
 Endif
 If tracks_fx02[tpos-1+(patterns[ppos]*64)]=10 Or tracks_fx02[tpos-1+(patterns[ppos]*64)]=6 Or tracks_fx02[tpos-1+(patterns[ppos]*64)]=5
 	If tracks_fx202[tpos-1+(patterns[ppos]*64)]<16 Then Volume02-=tracks_fx202[tpos-1+(patterns[ppos]*64)]
-	If tracks_fx202[tpos-1+(patterns[ppos]*64)]>15 Then Volume02+=(tracks_fx202[tpos-1+(patterns[ppos]*64)]-15)
+	If tracks_fx202[tpos-1+(patterns[ppos]*64)]>15 Then Volume02+=tracks_fx202[tpos-1+(patterns[ppos]*64)]/16
 Endif
 If tracks_fx03[tpos-1+(patterns[ppos]*64)]=10 Or tracks_fx03[tpos-1+(patterns[ppos]*64)]=6 Or tracks_fx03[tpos-1+(patterns[ppos]*64)]=5
 	If tracks_fx203[tpos-1+(patterns[ppos]*64)]<16 Then Volume03-=tracks_fx203[tpos-1+(patterns[ppos]*64)]
-	If tracks_fx203[tpos-1+(patterns[ppos]*64)]>15 Then Volume03+=(tracks_fx203[tpos-1+(patterns[ppos]*64)]-15)
+	If tracks_fx203[tpos-1+(patterns[ppos]*64)]>15 Then Volume03+=tracks_fx203[tpos-1+(patterns[ppos]*64)]/16
 Endif
 If tracks_fx04[tpos-1+(patterns[ppos]*64)]=10 Or tracks_fx04[tpos-1+(patterns[ppos]*64)]=6 Or tracks_fx04[tpos-1+(patterns[ppos]*64)]=5
 	If tracks_fx204[tpos-1+(patterns[ppos]*64)]<16 Then Volume04-=tracks_fx204[tpos-1+(patterns[ppos]*64)]
-	If tracks_fx204[tpos-1+(patterns[ppos]*64)]>15 Then Volume04+=(tracks_fx204[tpos-1+(patterns[ppos]*64)]-15)
+	If tracks_fx204[tpos-1+(patterns[ppos]*64)]>15 Then Volume04+=tracks_fx204[tpos-1+(patterns[ppos]*64)]/16
 Endif
 
 ' Set EAx and EBx 'Okt-25
